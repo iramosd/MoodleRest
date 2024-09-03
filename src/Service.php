@@ -39,13 +39,13 @@ class Service
     {
         $student = $this->moodleRest->request('core_user_create_users',
             ['users' => array([
-                'firstname' => $studentData['nombre'],
-                'lastname' => $studentData['nombre'],
-                'username' => $studentData['email'],
+                'firstname' => $studentData['first_name'],
+                'lastname' => $studentData['last_name'],
+                'username' => $studentData['username'],
                 'email' => $studentData['email'],
                 'password' => $studentData['password'],
-                'phone1' => $studentData['celular'],
-            ])
+                'phone1' => $studentData['phone'],
+                ])
             ]);
 
         return $student;
