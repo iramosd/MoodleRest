@@ -1,5 +1,5 @@
 {
-    "name": "uiramosdev/moodle-rest",
+    "name": "iramosdev/moodle-rest-wrapper",
     "description": "A wrapper for llagerlof/moodlerest",
     "type": "library",
     "license": "MIT",
