@@ -3,9 +3,6 @@
 namespace IramosDev\MoodleRestWrapper;
 
 use MoodleRest;
-
-require_once dirname(__FILE__) . '/vendor/autoload.php';
-
 class Service
 {
     private string $url;
