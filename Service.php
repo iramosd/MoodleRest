@@ -33,28 +33,27 @@ class Service
         return $isEnrolled;
     }
 
-    public function createStudent( array $attendanceStudent): array
+    public function createStudent( array $studentData): array
     {
         $student = $this->moodleRest->request('core_user_create_users',
             ['users' => array([
-                'firstname' => $attendanceStudent['nombre'],
-                'lastname' => $attendanceStudent['nombre'],
-                'username' => $attendanceStudent['email'],
-                'email' => $attendanceStudent['email'],
-                'password' => 'vla12345',
-                'phone1' => $attendanceStudent['celular'],
+                'firstname' => $studentData['nombre'],
+                'lastname' => $studentData['nombre'],
+                'username' => $studentData['email'],
+                'email' => $studentData['email'],
+                'password' => $studentData['password'],
+                'phone1' => $studentData['celular'],
             ])
             ]);
 
         return $student;
     }
 
-    public function enrollStudent(int $userId, int $courseId)
+    public function enrollStudent(int $userId, int $courseId, int $roleId)
     {
-        //TODO verify if roleid = 5 belongs to student
         $enrollment = $this->moodleRest->request('enrol_manual_enrol_users',
             ['enrolments' => array([
-                'roleid' => 5,
+                'roleid' => $roleId,
                 'userid' => $userId,
                 'courseid' => $courseId,
             ])
@@ -72,16 +71,16 @@ class Service
         );
     }
 
-    public function createCourse( array $attendanceCourse): array
+    public function createCourse( array $courseData): array
     {
-        $categories = $this->getCategoryByName($attendanceCourse['categoryname']);
+        $categories = $this->getCategoryByName($courseData['categoryname']);
 
         if(count($categories) === 0) return [];
 
         return $this->moodleRest->request('core_course_create_courses',
             ['courses' => array([
-                'fullname' => $attendanceCourse['fullname'],
-                'shortname' => $attendanceCourse['shortname'],
+                'fullname' => $courseData['fullname'],
+                'shortname' => $courseData['shortname'],
                 'categoryid' => $categories[0]['id'],
             ])
             ]);
