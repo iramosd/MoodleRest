@@ -1,4 +1,8 @@
 <?php
+
+namespace vendor;
+use MoodleRest;
+
 require_once dirname(__FILE__) . '/vendor/autoload.php';
 
 class Service
@@ -14,7 +18,7 @@ class Service
         $this->moodleRest = new MoodleRest($this->url, $this->token);
     }
 
-    public function getCourse(String $shortname): array
+    public function getCourse(string $shortname): array
     {
         $courses = $this->moodleRest->request('core_course_get_courses_by_field', ['field' => 'shortname', 'value' => $shortname]);
         $courses = json_decode(json_encode($courses));
@@ -26,14 +30,14 @@ class Service
         $listEnrolledStudents = $this->moodleRest->request('core_enrol_get_enrolled_users', ['courseid' => $courseId]);
         $isEnrolled = false;
 
-        foreach ($listEnrolledStudents as $student){
-            if($student['email'] === trim($email)) $isEnrolled = true;
+        foreach ($listEnrolledStudents as $student) {
+            if ($student['email'] === trim($email)) $isEnrolled = true;
         }
 
         return $isEnrolled;
     }
 
-    public function createStudent( array $studentData): array
+    public function createStudent(array $studentData): array
     {
         $student = $this->moodleRest->request('core_user_create_users',
             ['users' => array([
@@ -71,11 +75,11 @@ class Service
         );
     }
 
-    public function createCourse( array $courseData): array
+    public function createCourse(array $courseData): array
     {
         $categories = $this->getCategoryByName($courseData['categoryname']);
 
-        if(count($categories) === 0) return [];
+        if (count($categories) === 0) return [];
 
         return $this->moodleRest->request('core_course_create_courses',
             ['courses' => array([
