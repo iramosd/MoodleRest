@@ -1,0 +1,10 @@
+{
+    "name": "uiramosdev/moodle-rest",
+    "description": "A wrapper for llagerlof/moodlerest",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^7.4|^8.0",
+        "llagerlof/moodlerest": "^2.4"
+    }
+}
