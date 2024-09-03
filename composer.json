@@ -9,7 +9,7 @@
     },
     "autoload": {
         "psr-4": {
-            "iramosdev\\MoodleRestWrapper\\": "src"
+            "IramosDev\\MoodleRestWrapper\\": "src/"
         }
     }
 }
