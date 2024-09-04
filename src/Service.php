@@ -51,9 +51,9 @@ class Service
         return $student;
     }
 
-    public function enrollStudent(int $userId, int $courseId, int $roleId)
+    public function enrollStudent(int $userId, int $courseId, int $roleId): array
     {
-        $enrollment = $this->moodleRest->request('enrol_manual_enrol_users',
+         return $this->moodleRest->request('enrol_manual_enrol_users',
             ['enrolments' => array([
                 'roleid' => $roleId,
                 'userid' => $userId,
