@@ -9,7 +9,7 @@ class Service
     private string $token;
     private MoodleRest $moodleRest;
 
-    public function __construct($url, $token)
+    public function __construct(string $url, string $token)
     {
         $this->url = $url;
         $this->token = $token;
