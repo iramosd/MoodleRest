@@ -51,15 +51,17 @@ class Service
         return $student;
     }
 
-    public function enrollStudent(int $userId, int $courseId, int $roleId): array
+    public function enrollStudent(int $userId, int $courseId, int $roleId): void
     {
-         return $this->moodleRest->request('enrol_manual_enrol_users',
-            ['enrolments' => array([
-                'roleid' => $roleId,
-                'userid' => $userId,
-                'courseid' => $courseId,
-            ])
-            ]);
+        $this->moodleRest->request('enrol_manual_enrol_users',
+            ['enrolments' => array(
+                [
+                    'roleid' => $roleId,
+                    'userid' => $userId,
+                    'courseid' => $courseId,
+                ])
+            ]
+        );
     }
 
     public function getCategoryByName(string $name): array
