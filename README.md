@@ -12,17 +12,22 @@ Wrapper for llagerlof/MoodleRest, simplify http Request to Moodle Rest
 
 ### Installation
 * Run:
-```
+```terminal
 $ composer require iramosdev/moodle-rest-wrapper
 ```
 
 ### Usages:
 
-#### Create a new student:
-```
+#### Create a new instance for MoodleRestService:
+```php
 use IramosDev\MoodleRestWrapper\Service as MoodleRestService;
 
- $newStudent = $this->moodleRestService->createStudent([
+$moodleRestService = new MoodleRestService('https://www.moodle-site.com/api/endpoint', 'Moodle_token');
+```
+
+#### Create a new student:
+```php
+ $newStudent = $moodleRestService->createStudent([
             'firstname' => 'John',
             'lastname' => 'Doe',
             'username' => 'john.doe',
@@ -33,22 +38,16 @@ use IramosDev\MoodleRestWrapper\Service as MoodleRestService;
 ```
 
 #### Retrieve course data:
-```
-use IramosDev\MoodleRestWrapper\Service as MoodleRestService;
-
-$course = $this->moodleRestService->getCourse('course_name')
+```php
+$course = $moodleRestService->getCourse('course_name');
 ```
 
 #### Enroll new student:
-```
-use IramosDev\MoodleRestWrapper\Service as MoodleRestService;
-
-$this->moodleRestService->enrollStudent($newStudent[0]['id'], $course[0]?->id, 5);
+```php
+$moodleRestService->enrollStudent($newStudent[0]['id'], $course[0]?->id, 5);
 ```
 
 #### Check if student is currently enroll in a specific course:
-```
-use IramosDev\MoodleRestWrapper\Service as MoodleRestService;
-
-$this->moodleRestService->isEnrolled(5, 'jdoe@mail.com')
+```php
+$moodleRestService->isEnrolled(5, 'jdoe@mail.com')
 ```
