@@ -89,4 +89,19 @@ class Service
             ])
             ]);
     }
+
+    public function getUserByEmail(string $email): ?array
+    {
+        $userResponse = $this->moodleRest->request('core_user_get_users',
+            ['criteria' =>[
+                [
+                    'key' => 'email',
+                    'value' => $email
+                ]
+            ]
+            ]);
+
+        return count($userResponse['users']) > 0 ? $userResponse['users'][0] : null;
+    }
+
 }
