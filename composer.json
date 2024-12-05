@@ -5,7 +5,7 @@
     "license": "MIT",
     "version": "0.1.2",
     "require": {
-        "php": "^7.4|^8.0",
+        "php": "^7.3|^8.0",
         "llagerlof/moodlerest": "^2.4"
     },
     "autoload": {
