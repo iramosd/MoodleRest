@@ -112,4 +112,9 @@ class Service
         return $courses->courses;
     }
 
+    public function listStudentsByCourse(int $courseId): array
+    {
+        return $this->moodleRest->request('core_enrol_get_enrolled_users', ['courseid' => $courseId]);
+    }
+
 }
