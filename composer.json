@@ -3,7 +3,7 @@
     "description": "A wrapper for llagerlof/moodlerest",
     "type": "library",
     "license": "MIT",
-    "version": "0.1.2.1",
+    "version": "1.0",
     "require": {
         "php": "^7.3|^8.0",
         "llagerlof/moodlerest": "^2.4"
