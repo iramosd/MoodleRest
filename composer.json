@@ -12,5 +12,6 @@
         "psr-4": {
             "IramosDev\\MoodleRestWrapper\\": "src/"
         }
-    }
+    },
+    "minimum-stability": "main"
 }
