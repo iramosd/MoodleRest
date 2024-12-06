@@ -104,4 +104,12 @@ class Service
         return count($userResponse['users']) > 0 ? $userResponse['users'][0] : null;
     }
 
+    public function getCourseById(int $courseId): array
+    {
+        $courses = $this->moodleRest->request('core_course_get_courses_by_field', ['field' => 'id', 'value' => $courseId]);
+        
+        $courses = json_decode(json_encode($courses));
+        return $courses->courses;
+    }
+
 }
