@@ -43,8 +43,8 @@ class Service
                 'lastname' => $studentData['lastname'],
                 'username' => $studentData['username'],
                 'email' => $studentData['email'],
-                'password' => $studentData['password'] ?? "",
-                'phone1' => $studentData['phone1'] ?? "",
+                'password' => $studentData['password'],
+                'phone1' => $studentData['phone1'],
                 ])
             ]);
 
